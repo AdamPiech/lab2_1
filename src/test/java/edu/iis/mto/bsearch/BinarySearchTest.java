@@ -6,16 +6,22 @@ import org.junit.Test;
 
 public class BinarySearchTest {
 
-	@Test
+//	@Test
+//	public void testFirst() {
+//		int[] array = {};
+//		boolean flag = false;
+//		try {
+//			SearchResult result = BinarySearch.search(3, array);
+//		} catch (IllegalArgumentException e) {
+//			flag = true;
+//		}
+//		assertTrue(flag);
+//	}
+	
+	@Test(expected = IllegalArgumentException.class)
 	public void testFirst() {
 		int[] array = {};
-		boolean flag = false;
-		try {
-			SearchResult result = BinarySearch.search(3, array);
-		} catch (IllegalArgumentException e) {
-			flag = true;
-		}
-		assertTrue(flag);
+		BinarySearch.search(3, array);
 	}
 		
 	@Test
