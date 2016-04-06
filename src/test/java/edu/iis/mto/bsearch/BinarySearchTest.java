@@ -48,4 +48,26 @@ public class BinarySearchTest {
 //		assertEquals(result.getPosition(), -1);
 		assertFalse(result.isFound());
 	}
+	
+	@Test
+	public void testSeventh() {
+		int[] array = {7, 7, 10, 10, 10};
+		SearchResult result = BinarySearch.search(7, array);
+		assertEquals(result.getPosition(), 1);
+	}
+	
+	@Test
+	public void testEighth() {
+		int[] array = {7, 7, 7, 7, 7};
+		SearchResult result = BinarySearch.search(7, array);
+		assertEquals(result.getPosition(), array.length/2+1);
+	}
+	
+
+	@Test(expected = IllegalArgumentException.class)
+	public void testNinth() {
+		int[] array = {};
+		BinarySearch.search(7, array);
+	}
+
 }
