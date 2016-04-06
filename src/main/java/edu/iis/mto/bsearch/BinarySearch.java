@@ -3,6 +3,14 @@
  */
 package edu.iis.mto.bsearch;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Stream;
+
+import edu.iis.mto.error.SequenceIsNotSortedException;
+import javafx.print.Collation;
+
 /**
  * Utility Class dla wyszukiwania binarnego
  * 
@@ -19,10 +27,16 @@ public class BinarySearch {
 	 * @return obiekt rezultatu o polach: - found (true jezeli znaleziony) -
 	 *         position (jezeli znaleziony - pozycja w sekwencji, jezeli nie
 	 *         znaleziony -1)
+	 * @throws SequenceIsNotSortedException 
 	 */
 	public static SearchResult search(int key, int[] seq) {
+		
 		if (seq.length == 0) {
 			throw new IllegalArgumentException();
+		}
+		
+		if (!isSorted(seq)) {
+			throw new SequenceIsNotSortedException();
 		}
 		
 		int start = 0;
@@ -44,6 +58,21 @@ public class BinarySearch {
 
 		}
 		return result;
+	}
+
+	private static boolean isSorted(int[] seq) {
+		
+		if (seq.length <= 1) {
+			return true;
+		}
+
+		for (int index = 1; index < seq.length; index++) {
+			if (seq[index] < seq[index - 1]) {
+				return false;
+			}
+		}
+		
+		return true;
 	}
 
 }

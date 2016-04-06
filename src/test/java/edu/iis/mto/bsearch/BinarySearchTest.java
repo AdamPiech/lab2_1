@@ -4,6 +4,8 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
+import edu.iis.mto.error.SequenceIsNotSortedException;
+
 public class BinarySearchTest {
 
 	@Test
@@ -68,6 +70,25 @@ public class BinarySearchTest {
 	public void testNinth() {
 		int[] array = {};
 		BinarySearch.search(7, array);
+	}
+	
+	@Test
+	public void testTenth() {
+		int[] array = {7, 7, 7, 10, 10};
+		SearchResult result = BinarySearch.search(10, array);
+		assertNotEquals(result.getPosition(), array.length);
+	}
+	
+	@Test(expected = SequenceIsNotSortedException.class)
+	public void testTwelfth() {
+		int[] array = {5, 4, 3, 2, 1};
+		BinarySearch.search(10, array);
+	}
+	
+	@Test(expected = SequenceIsNotSortedException.class)
+	public void testEleventh() {
+		int[] array = {1, 2, 3, 2, 1};
+		BinarySearch.search(10, array);
 	}
 
 }
