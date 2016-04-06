@@ -6,50 +6,46 @@ import org.junit.Test;
 
 public class BinarySearchTest {
 
-//	@Test
-//	public void testFirst() {
-//		int[] array = {};
-//		boolean flag = false;
-//		try {
-//			SearchResult result = BinarySearch.search(3, array);
-//		} catch (IllegalArgumentException e) {
-//			flag = true;
-//		}
-//		assertTrue(flag);
-//	}
-	
-	@Test(expected = IllegalArgumentException.class)
+	@Test
 	public void testFirst() {
-		int[] array = {};
-		BinarySearch.search(3, array);
-	}
-		
-	@Test
-	public void testSecond() {
-		int[] array = {1, 2, 3, 4, 5};
-		SearchResult result = BinarySearch.search(3, array);
-		assertEquals(result.getPosition(), 3);
-	}
-	
-	@Test
-	public void testThird() {
-		int[] array = {1, 2, 3, 4, 5};
-		SearchResult result = BinarySearch.search(3, array);
+		int[] array = {7};
+		SearchResult result = BinarySearch.search(7, array);
 		assertTrue(result.isFound());
 	}
 	
 	@Test
-	public void testFourtht() {
-		int[] array = {1, 2, 3, 4, 5};
-		SearchResult result = BinarySearch.search(7, array);
+	public void testSecond() {
+		int[] array = {7};
+		SearchResult result = BinarySearch.search(5, array);
 		assertFalse(result.isFound());
+	}
+
+	@Test
+	public void testThird() {
+		int[] array = {2, 3, 4, 5, 6};
+		SearchResult result = BinarySearch.search(2, array);
+		assertEquals(result.getPosition(), 1);
+	}
+	
+	@Test
+	public void testFourth() {
+		int[] array = {2, 3, 4, 5, 6};
+		SearchResult result = BinarySearch.search(6, array);
+		assertEquals(result.getPosition(), array.length);
 	}
 	
 	@Test
 	public void testFifth() {
-		int[] array = {1, 2, 3, 4, 5};
-		SearchResult result = BinarySearch.search(7, array);
-		assertEquals(result.getPosition(), -1);
+		int[] array = {2, 3, 4, 5, 6};
+		SearchResult result = BinarySearch.search(4, array);
+		assertEquals(result.getPosition(), array.length/2+1);
 	}
-
+	
+	@Test
+	public void testSixth() {
+		int[] array = {2, 3, 4, 5, 6};
+		SearchResult result = BinarySearch.search(8, array);
+//		assertEquals(result.getPosition(), -1);
+		assertFalse(result.isFound());
+	}
 }
